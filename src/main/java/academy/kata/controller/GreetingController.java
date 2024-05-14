@@ -27,7 +27,7 @@ public class GreetingController {
         model.addAttribute("greeting", "Hello!");
         model.addAttribute("greetingMessage", "Практическая задача 3.1.2 Java pre-project. Задача 3.1. Начинаем работу со Spring Boot.");
         model.addAttribute("author", "Выполнил: Лапицкий Юрий   //   Performed by: Yury Lapitski");
-        return "index";
+        return "greeting-page";
     }
 
     // отдает страницу для создания нового пользователя

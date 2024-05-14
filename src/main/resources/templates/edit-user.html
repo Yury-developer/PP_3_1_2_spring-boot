@@ -3,10 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Edit_user</title>
+
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/styles.css">
     </head>
 
     <body>
-        <H3>page: Edit user</H3>
+        <H2 class="page-info-text">page: Edit user</H2>
         <br/>
 
         <form th:action="@{/users/edit}" th:object="${editUser}" method="post">
@@ -57,7 +59,7 @@
         </form>
         <br/>
 
-        <form th:method="GET" th:action="@{/users/}">
+        <form th:method="GET" th:action="@{/users}">
             <input type="submit" value="Go to the main page"/>
         </form>
         <br/> <br/> <hr/>

@@ -4,30 +4,54 @@
     <head>
         <meta charset="UTF-8">
         <title>All_users</title>
+
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/styles.css">
     </head>
 
     <body>
-        <H3>page: All users</H3>
+        <H2 class="page-info-text">page: All users</H2>
         <br/>
 
-        <table border="2">
-            <tr>
-                <th style="width: 20px; background-color: lightcyan;">id</th>
-                <th style="width: 350px; background-color: lightcyan;">Name</th>
-                <th style="width: 20%; background-color: lightcyan;">DateBirth</th>
-                <th style="width: 25%; background-color: lightcyan;">Action</th>
-            </tr>
 
-            <tr th:each="itemUser : ${viewAllUsers}">
-                <td style="text-align: center;" th:utext="${itemUser.getId()}">id</td>
-                <td th:utext="${itemUser.getName()}">FirstName</td>
-                <td style="text-align: center;" th:utext="${itemUser.getDateBirth()}">DateBirth</td>
-                <td style="text-align: center;"> <em> <a th:href="@{/users/view(user_id=${itemUser.getId()})}">View info</a> </em> </td>
-            </tr>
-        </table>
+        <div th:switch="${viewAllUsers.size()}">
+
+            <div th:case="0">
+                <span class="highlighted-text">База пуста, нет ни одного пользователя <br/> <br/> No users found! </span>
+            </div>
+
+            <div th:case="*">
+                <span class="highlighted-text">Вывожу всех существующих пользователей:</span>
+                <br/> <br/>
+                <table border="2">
+                    <tr>
+                        <th style="width: 40px; background-color: lightcyan;">id</th>
+                        <th style="width: 360px; background-color: lightcyan;">Name</th>
+                        <th style="width: 20%; background-color: lightcyan;">DateBirth</th>
+                        <th style="width: 30%; background-color: lightcyan;">Action</th>
+                    </tr>
+
+                    <tr th:each="itemUser : ${viewAllUsers}">
+                        <td style="text-align: center;" th:utext="${itemUser.getId()}">id</td>
+                        <td th:utext="${itemUser.getName()}">FirstName</td>
+                        <td style="text-align: center;" th:utext="${itemUser.getDateBirth()}">DateBirth</td>
+                        <td style="text-align: center;"> <em> <a th:href="@{/users/view(user_id=${itemUser.getId()})}">View info</a> </em> </td>
+                    </tr>
+                </table>
+            </div>
+            <h2 th:case="*">один</h2>
+<!--            <div th:case="*">-->
+
+<!--                много-->
+
+<!--            </div>-->
+        </div>
+
+
+
+
         <br/> <br/> <hr/> <br/>
 
-        <form th:method="GET" th:action="@{/users/add/}">
+        <form th:method="GET" th:action="@{/users/create}">
             <input type="submit" value="Create new user"/>
         </form>
     </body>
