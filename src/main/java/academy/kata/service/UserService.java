@@ -13,10 +13,12 @@ public interface UserService {
 
     List<User> findAll();
 
-    void update(User user);
+    void updateUser(User user);
 
     void deleteById(Long id);
 
+    void deleteAll();
 
-    void generateTestData();
+
+    void generateTestData(Integer count);
 }
